@@ -1,12 +1,62 @@
-*.class
+Skip to content
+This repository  
+Search
+Pull requests
+Issues
+Gist
+ @maheba
+ Unwatch 6
+  Star 0
+  Fork 0 maheba/KD405A_Marianne_B
+ Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathKD405A_Marianne_B/.gitignore
+363f1f2  14 days ago
+@maheba maheba GitHub-fix
+1 contributor
+RawBlameHistory     45 lines (32 sloc)  588 Bytes
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Eclipse Core
+#.project
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+#.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+Status API Training Shop Blog About Pricing
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
