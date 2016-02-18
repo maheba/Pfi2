@@ -112,13 +112,13 @@ public class DigitalClockGUI extends JFrame {
 		
 		textFieldMinut = new JTextField();
 		textFieldMinut.setEditable(false);
-		textFieldMinut.setText("Minuter:");
+		textFieldMinut.setText("Minut:");
 		textFieldMinut.setForeground(new Color(255, 215, 0));
 		textFieldMinut.setFont(new Font("Segoe UI Black", Font.PLAIN, 18));
 		textFieldMinut.setColumns(10);
 		textFieldMinut.setBorder(null);
 		textFieldMinut.setBackground(Color.BLACK);
-		textFieldMinut.setBounds(168, 269, 79, 26);
+		textFieldMinut.setBounds(185, 269, 62, 26);
 		contentPane.add(textFieldMinut);
 		
 		JButton btnOk = new JButton("OK");
@@ -162,7 +162,6 @@ public class DigitalClockGUI extends JFrame {
 		contentPane.add(lblBakgrundsbild);
 		
 		clockLogic = new ClockLogic(this);	
-		//clockLogic.music();
 	}
 	
 	//Methods
@@ -173,6 +172,6 @@ public class DigitalClockGUI extends JFrame {
 	/**A method to run the alarm-effect.*/	
 	public void activateAlarm () {
 		lblBakgrundsbild.setIcon(new ImageIcon(DigitalClockGUI.class.getResource("/Images/alarm.gif")));
-		//clockLogic.music();
+		clockLogic.makeSound();
 	}
 }

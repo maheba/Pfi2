@@ -6,15 +6,17 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
-
 import sun.audio.*;
 import java.io.*;
+import java.net.URL;
 
 public class ClockLogic {
 	
 	private DigitalClockGUI clockGUI;
 	private int myAlarmHour;
 	private int myAlarmMinute;
+	private boolean alarmActive = false;
+	private Clip clip;
 
 	//Constructor
 	public ClockLogic(DigitalClockGUI digitalClockGUI) {
@@ -48,26 +50,26 @@ public class ClockLogic {
 		myAlarmMinute = 99;
 		myAlarmHour = 99;
 		clockGUI.lblBakgrundsbild.setIcon(new ImageIcon(DigitalClockGUI.class.getResource("/Images/Night4.jpg")));
-	}
-	/**A method that plays the alarm sound.*/
-	public void music() {
-	     
-		/*
-		AudioPlayer myAudioPlayer = AudioPlayer.player;
-		AudioStream myAudioStream;
-		AudioData myAudioData;
-		ContinuousAudioDataStream loop = null;
+		alarmActive=false;
+		clip.stop();
+		clip.close();
 		
-		try {
-			myAudioStream = new AudioStream(new FileInputStream("c:\\koltrast.wav"));
-			//myAudioStream = new AudioStream(new FileInputStream("koltrast.wav"));
-			myAudioData = myAudioStream.getData();
-			loop = new ContinuousAudioDataStream(myAudioData);
-		} catch (IOException error){System.out.println(error.toString());}
-		
-		myAudioPlayer.start(loop);
-		*/
 	}
+	/**A method that plays the alarm sound.*/	
+	public void makeSound() {
+		  try {
+			  URL url = DigitalClockGUI.class.getResource("/Images/koltrast.wav");
+		      AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+		      //Clip clip;
+		      clip = AudioSystem.getClip();
+		      clip.open(audioIn);
+		      //clip.start();
+		      clip.loop(clip.LOOP_CONTINUOUSLY);
+		  } catch (Exception e) {
+			  e.printStackTrace();
+		  }
+	}
+		
 	/**An innerThread to enable to get continuous update for the clock.*/
 	public class InnerThread {
 		//Constructor
@@ -107,8 +109,9 @@ public class ClockLogic {
 						clockGUI.setTimeOnLabel(" " + clockHour + ":" + clockMinute + ":" + clockSecond + "   ");
 												
 						//Kollar om ställda alarmet matchar klockan och sätter igång larmmetoden.
-						if (myAlarmHour == hour && myAlarmMinute == minute) {
+						if (myAlarmHour == hour && myAlarmMinute == minute && alarmActive == false) {
 							clockGUI.activateAlarm();
+							alarmActive=true;
 						}
 					} catch (InterruptedException e) {}
 					//System.out.println("Awake!");
